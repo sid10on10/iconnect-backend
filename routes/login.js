@@ -17,11 +17,7 @@ router.post('/', async function(req, res, next) {
             let result  = await bcryptjs.compare(req.body.password,user.password)
             if(result){
                 let token = jwt.sign({id:user._id},process.env.Secret)
-                res.cookie('token', token, { httpOnly: true })
-                res.status(200).json({
-                    message:"Login Successfull",
-                    token
-                })
+                res.cookie('token', token, { httpOnly: true }).sendStatus(200);
             }else{
                 res.json({
                     message:"Password Incorrect"
