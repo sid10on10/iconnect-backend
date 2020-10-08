@@ -9,7 +9,12 @@ router.get('/', function(req, res, next) {
 
 /* Get dashboard*/
 router.get('/dashboard', authenticate, function(req, res, next) {
-  res.send("Protected Route");
+  res.send("You are now logged in to View Dashboard");
+});
+
+// to check for valid tokens
+router.get('/checkToken', authenticate, function(req, res) {
+  res.sendStatus(200);
 });
 
 module.exports = router;
