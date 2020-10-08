@@ -7,12 +7,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Iconnect Backend' });
 });
 
-/* Get dashboard*/
+/* Get dashboard*/ // Protected Component in React work in POSTMAN but in browser cookie not working
 router.get('/dashboard', authenticate, function(req, res, next) {
   res.send("You are now logged in to View Dashboard");
 });
 
-// to check for valid tokens
+// to check for valid tokens in React for protected Components
 router.get('/checkToken', authenticate, function(req, res) {
   res.sendStatus(200);
 });
