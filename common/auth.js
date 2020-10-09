@@ -1,18 +1,21 @@
-const jwt = require('jsonwebtoken');
-const secret = process.env.Secret;
-const authenticate = function(req, res, next) {
-  const token = req.cookies.token;
-  if (!token) {
-    res.status(401).send('Unauthorized: No token provided');
-  } else {
-    jwt.verify(token, secret, function(err, decoded) {
-      if (err) {
-        res.status(401).send('Unauthorized: Invalid token');
-      } else {
-        req.id = decoded.id;
+var jwt=require("jsonwebtoken")
+var authenticate=function(req,res,next){
+if(req.headers.authorization){
+    jwt.verify(req.headers.authorization,process.env.Secret,function(err,decode){
+
+        if(err){
+            res.json({
+                message:"Token not valid"
+            })
+        }
         next();
-      }
-    });
-  }
+    })
+
 }
-module.exports = {authenticate};
+else{
+    res.json({
+        message:"Token not present"
+    })
+}
+}
+module.exports={authenticate}
