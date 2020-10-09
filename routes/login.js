@@ -20,8 +20,8 @@ router.post('/', async function(req, res, next) {
             if(result){
                 // if it is true login user
                 let token = jwt.sign({id:user._id},process.env.Secret)
-                // set token in cookie
-                res.cookie('token', token, { httpOnly: true })
+                // can set token in cookie
+                //res.cookie('token', token, { httpOnly: true })
                 res.status(200).json({
                     message:"Login Successfull",
                     token
