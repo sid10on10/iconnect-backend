@@ -5,7 +5,7 @@ if(req.headers.authorization){
 
         if(err){
             res.json({
-                message:"Token not valid"
+                message:"Token not valid.Login to view Dashboard"
             })
         }
         next();
