@@ -14,7 +14,9 @@ router.get('/dashboard', authenticate, function(req, res, next) {
 
 // to check for valid tokens in React for protected Components
 router.get('/checkToken', authenticate, function(req, res) {
-  res.sendStatus(200);
+  res.status(200).json({
+    message:"valid token"
+  });
 });
 
 module.exports = router;
