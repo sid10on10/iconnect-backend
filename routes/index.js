@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 /* Get dashboard*/ // Protected Component in React work in POSTMAN but in browser cookie not working
 router.get('/dashboard', authenticate, function(req, res, next) {
-  res.send(200).json({message:"You are now logged in to View Dashboard"});
+  res.status(200).json({message:"You are now logged in to View Dashboard"});
 });
 
 // to check for valid tokens in React for protected Components
