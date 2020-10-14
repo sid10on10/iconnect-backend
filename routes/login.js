@@ -19,7 +19,7 @@ router.post('/', async function(req, res, next) {
             let result  = await bcryptjs.compare(req.body.password,user.password)
             if(result){
                 // if it is true login user
-                let token = jwt.sign({id:user._id},process.env.Secret)
+                let token = jwt.sign({id:user._id},"abcdefghijklmnopqrs")
                 // can set token in cookie
                 //res.cookie('token', token, { httpOnly: true })
                 res.status(200).json({
